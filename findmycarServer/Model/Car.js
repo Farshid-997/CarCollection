@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// const bcrypt = require("bcryptjs");
+
 
 // schema design
 const carSchema = mongoose.Schema(
@@ -8,50 +8,28 @@ const carSchema = mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: [true, "Please Provide a name"],
+      required: [true, "Please Provide a car name"],
       minlength: [10, "Name must be at least 10 length character"],
       maxlength: [50, "Name is too large"],
     },
-    password: {
+   brand: {
       type: String,
-      required: [true, "Please Provide a password"],
+      required: [true, "Please Provide a brand Name"],
     },
-    role: {
+    model: {
       type: String,
-      enum: ["Admin", "User"],
-      default: "User",
+      required: [true, "Please Provide a model of the car"],
     },
-    email: {
+    color: {
       type: String,
-      required: true,
-      unique: true,
-      validate: {
-        validator: function (value) {
-          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-        },
-        message: `This is not valid for Email address`,
-      },
+     
     },
-
-    active: {
-      type: Boolean,
-      default: true,
-    },
-
-    phone: {
+    weight: {
       type: String,
-      trim: true,
-      validate: {
-        validator: function (value) {
-          return /^\d{11}$/.test(value);
-        },
-        message: "Enter a valid phone number",
-      },
     },
-
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
+    price:{
+      type:Number
+    }
   },
 
   {
